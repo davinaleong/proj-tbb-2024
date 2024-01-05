@@ -1,0 +1,54 @@
+---
+import "../styles/app.scss"
+import dayjs from "dayjs"
+import favicon from "../assets/images/logo.svg"
+
+import PrimaryHeaderComponentAstro from "../components/primary-header.component.astro"
+import PrimaryFooterComponentAstro from "../components/primary-footer.component.astro"
+
+const { APP_NAME, DESCRIPTION, KEYWORDS, AUTHOR, RELEASED_AT } = import.meta.env
+
+const { title = ``, description = DESCRIPTION, keywords = KEYWORDS } = Astro.props
+const thisTitle = title ? `${APP_NAME} - ${title}` : APP_NAME
+
+const now: number = new Date().getFullYear()
+const year: number = Number(dayjs().format("YYYY"))
+const copyrightYear: string =
+year === now ? `${now}` : `${year} - ${now}`
+---
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description}>
+    <meta name="keywords" content={keywords}>
+    <meta name="author" content={AUTHOR}>
+
+    <title>{thisTitle}</title>
+
+    <link rel="shortcut icon" href={favicon.src} type="image/xml+svg">
+
+    <script
+      is:inline
+      src="https://kit.fontawesome.com/1b82ea5cb2.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body id="top">
+    <a href="#" class="btn btn-tbb btn-skip-navigation">Skip Navigation</a>
+
+    <PrimaryHeaderComponentAstro />
+
+    <main
+      class="primary-main primary-main-home container-q container-q-primary-main"
+    >
+      <a href="#top" class="btn btn-tbb btn-back-to-top">Top</a>
+
+      <slot />
+    </main>
+
+    <PrimaryFooterComponentAstro />
+  </body>
+</html>
