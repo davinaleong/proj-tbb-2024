@@ -1,0 +1,26 @@
+// Main CSS Script
+
+@tailwind base;
+@tailwind components;
+
+@import "./fonts";
+@import "./custom";
+@import "./content";
+@import "./tables";
+@import "./buttons";
+@import "./cards";
+@import "./paginations";
+@import "./sections";
+@import "./forms";
+@import "./brand";
+@import "./primary-header";
+@import "./primary-footer";
+@import "./primary-main";
+@import "./home";
+@import "./post";
+@import "./archive";
+@import "./archive-list";
+@import "./contact";
+@import "./subscription";
+
+@tailwind utilities;

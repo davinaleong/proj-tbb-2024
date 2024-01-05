@@ -1,0 +1,130 @@
+// General Custom Styles
+:root {
+  --content-width: 1200px;
+  --flow-spacer: theme("gap.4");
+}
+
+:focus {
+  outline: 2px solid theme("colors.neutral.500");
+}
+
+body {
+  color: theme("colors.neutral.950");
+  background-color: theme("colors.tbbCream.50");
+  font-family: theme("fontFamily.sans");
+  font-weight: theme("fontWeight.normal");
+  font-size: theme("fontSize.base");
+  min-height: 100vh;
+  position: relative;
+}
+
+a {
+  --_a-clr: theme("colors.neutral.700");
+  --_a-td: underline;
+
+  --_a-hover-clr: theme("colors.neutral.500");
+  --_a-hover-td: underline;
+
+  color: var(--_a-clr);
+  text-decoration: var(--_a-td);
+
+  &:hover {
+    color: var(--_a-hover-clr);
+    text-decoration: var(--_a-hover-td);
+  }
+}
+
+time {
+  color: theme("colors.neutral.500");
+  font-weight: theme("fontWeight.semibold");
+}
+
+.flow {
+  --_flow-spacer: var(--flow-spacer);
+
+  & > * + * {
+    margin-block-start: var(--_flow-spacer);
+  }
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.wrapper {
+  --_wrapper-width: var(--content-width);
+
+  width: min(100%, var(--_wrapper-width));
+}
+
+.content-grid {
+  --_width: var(--content-width);
+
+  display: grid;
+  grid-template-columns: 0.1fr [breakout-start] 0.2fr [content-start] 1fr [content-end] 0.2fr [breakout-end] 0.1fr;
+
+  & > * {
+    grid-column: content;
+  }
+
+  &-breakout {
+    & > * {
+      grid-column: breakout;
+    }
+  }
+
+  &-full-width {
+    & > * {
+      grid-column: full-width;
+    }
+  }
+}
+
+.text-grid {
+  --_text-width: 20ch;
+  --_spacer: var(--v-400);
+
+  display: grid;
+  grid-template-columns: var(--_text-width) auto;
+  align-items: end;
+  gap: var(--_spacer);
+}
+
+.container-q {
+  --_container-q-name: container-q;
+
+  container-name: var(--_container-q-name);
+  container-type: inline-size;
+
+  &-primary-main {
+    --_container-q-name: container-q-primary-main;
+  }
+
+  &-home-featured {
+    --_container-q-name: container-q-home-featured;
+  }
+
+  &-home-scripture {
+    --_container-q-name: container-q-home-scripture;
+  }
+
+  &-home-articles {
+    --_container-q-name: container-q-home-articles;
+  }
+
+  &-archive-content {
+    --_container-q-name: container-q-archive-content;
+  }
+
+  &-archive-list-articles {
+    --_container-q-name: container-q-archive-list-articles;
+  }
+
+  &-contact-form {
+    --_container-q-name: container-q-contact-form;
+  }
+
+  &-subscription-form {
+    --_container-q-name: container-q-subscription-form;
+  }
+}

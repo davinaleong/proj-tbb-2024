@@ -1,0 +1,11 @@
+/// Primary Main
+
+.primary-main {
+  position: relative;
+
+  a {
+    &::after {
+      content: " >>";
+    }
+  }
+}

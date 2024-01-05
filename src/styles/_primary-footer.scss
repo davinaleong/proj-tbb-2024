@@ -1,0 +1,9 @@
+/// Primary Footer
+
+.primary-footer {
+  --_primary-footer-border: thin solid theme("colors.neutral.800");
+
+  background-color: theme("colors.tbbTan.200");
+  border-block-start: var(--_primary-footer-border);
+  border-block-end: var(--_primary-footer-border);
+}

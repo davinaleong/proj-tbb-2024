@@ -1,0 +1,98 @@
+/// Content
+
+.content {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: theme("fontFamily.serif");
+  }
+
+  h1 {
+    font-size: theme("fontSize.6xl");
+  }
+
+  h2 {
+    font-size: theme("fontSize.5xl");
+  }
+
+  h3 {
+    font-size: theme("fontSize.4xl");
+  }
+
+  h4 {
+    font-size: theme("fontSize.3xl");
+  }
+
+  h5 {
+    font-size: theme("fontSize.2xl");
+  }
+
+  h6 {
+    font-size: theme("fontSize.xl");
+  }
+
+  ul,
+  ol {
+    padding-inline-start: theme("padding.5");
+  }
+
+  ul {
+    list-style-type: disc;
+  }
+
+  ol {
+    list-style-type: decimal;
+  }
+
+  blockquote {
+    --_blockquote-spacer: theme("spacing.4");
+    --_blockquote-decor-spacer: theme("spacing.2");
+    --_blockquote-border: thin solid theme("colors.neutral.800");
+
+    background-color: theme("colors.tbbBlue.300");
+    display: grid;
+    align-items: center;
+    grid-template-columns: min-content auto min-content;
+    padding-block-start: var(--_blockquote-spacer);
+    padding-block-end: var(--_blockquote-spacer);
+    border-block-start: var(--_blockquote-border);
+    border-block-end: var(--_blockquote-border);
+    border-inline-start: var(--_blockquote-border);
+    border-inline-end: var(--_blockquote-border);
+
+    &::before {
+      content: "Bible Verse";
+      letter-spacing: theme("letterSpacing.3");
+      font-family: theme("fontFamily.serif");
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      padding-block-start: var(--_blockquote-decor-spacer);
+      padding-block-end: var(--_blockquote-decor-spacer);
+      padding-inline-start: var(--_blockquote-decor-spacer);
+      padding-inline-end: var(--_blockquote-decor-spacer);
+      border-right: var(--_blockquote-border);
+      margin-right: var(--_blockquote-spacer);
+      margin-top: calc(var(--_blockquote-spacer) * -1);
+      margin-bottom: calc(var(--_blockquote-spacer) * -1);
+    }
+
+    &::after {
+      content: "Bible Verse";
+      letter-spacing: theme("letterSpacing.3");
+      font-family: theme("fontFamily.serif");
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      padding-block-start: var(--_blockquote-decor-spacer);
+      padding-block-end: var(--_blockquote-decor-spacer);
+      padding-inline-start: var(--_blockquote-decor-spacer);
+      padding-inline-end: var(--_blockquote-decor-spacer);
+      border-left: var(--_blockquote-border);
+      margin-left: var(--_blockquote-spacer);
+      margin-top: calc(var(--_blockquote-spacer) * -1);
+      margin-bottom: calc(var(--_blockquote-spacer) * -1);
+    }
+  }
+}

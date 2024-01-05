@@ -1,0 +1,29 @@
+/// Fonts
+
+/// Fonts - Inter
+@font-face {
+  font-family: Inter;
+  src: url(../assets/fonts/Inter/Inter-VariableFont_slntwght.ttf)
+    format(truetype);
+}
+
+/// Fonts - Playfair Display
+@font-face {
+  font-family: "Playfair Display";
+  src: url(../assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf)
+    format(truetype);
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  font-style: italic;
+  src: url(../assets/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf)
+    format(truetype);
+}
+
+/// Fonts - Inconsolata
+@font-face {
+  font-family: Inconsolata;
+  src: url(../assets/fonts/Inconsolata/Inconsolata-VariableFont_wdthwght.ttf)
+    format(truetype);
+}

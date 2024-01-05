@@ -1,0 +1,186 @@
+/// Colours
+
+/// Colours - Selected
+$hello: hsl(38, 10%, 63%);
+$theme-bg: $clr-cream-50;
+$theme-home-hero-bg: $clr-blue-300;
+$theme-featured-bg: $clr-tan-100;
+$theme-post-bg-pink: $clr-pink-200;
+$theme-post-bg-green: $clr-green-300;
+$theme-post-bg-blue: $clr-blue-300;
+$theme-post-bg-brown: $clr-brown-400;
+$theme-post-bg-tan: $clr-tan-300;
+$theme-post-bg-tan-alt: $clr-tan-400;
+
+/// Colours - Cream
+$clr-cream-50: hsl(39, 54%, 91%);
+$clr-cream-100: hsl(39, 54%, 81%);
+$clr-cream-200: hsl(39, 54%, 71%);
+$clr-cream-300: #d1ac66;
+$clr-cream-300: hsl(39, 54%, 61%);
+$clr-cream-400: hsl(39, 54%, 51%);
+$clr-cream-500: hsl(39, 54%, 41%);
+$clr-cream-600: hsl(39, 54%, 31%);
+$clr-cream-700: hsl(39, 54%, 21%);
+$clr-cream-800: hsl(39, 54%, 11%);
+$clr-cream-900: hsl(39, 54%, 1%);
+$clr-creams: (
+  "50": $clr-cream-50,
+  "100": $clr-cream-100,
+  "200": $clr-cream-200,
+  "300": $clr-cream-300,
+  "400": $clr-cream-400,
+  "500": $clr-cream-500,
+  "600": $clr-cream-600,
+  "700": $clr-cream-700,
+  "800": $clr-cream-800,
+  "900": $clr-cream-900,
+);
+/// Colours - Tans
+$clr-tan-50: hsl(39, 32%, 91%);
+$clr-tan-100: hsl(39, 32%, 81%);
+$clr-tan-200: hsl(39, 32%, 71%);
+$clr-tan-300: #aaa397;
+$clr-tan-300: hsl(38, 10%, 63%);
+$clr-tan-400: #aaa397;
+$clr-tan-400: hsl(38, 10%, 53%);
+$clr-tan-500: hsl(38, 10%, 43%);
+$clr-tan-600: hsl(38, 10%, 33%);
+$clr-tan-700: hsl(38, 10%, 23%);
+$clr-tan-800: hsl(38, 10%, 13%);
+$clr-tan-900: hsl(38, 10%, 3%);
+$clr-tans: (
+  "50": $clr-tan-50,
+  "100": $clr-tan-100,
+  "200": $clr-tan-200,
+  "300": $clr-tan-300,
+  "400": $clr-tan-400,
+  "500": $clr-tan-500,
+  "600": $clr-tan-600,
+  "700": $clr-tan-700,
+  "800": $clr-tan-800,
+  "900": $clr-tan-900,
+);
+/// Colours - Greens
+$clr-green-50: hsl(59, 25%, 94%);
+$clr-green-100: hsl(59, 25%, 84%);
+$clr-green-200: hsl(59, 25%, 74%);
+$clr-green-300: #bab98c;
+$clr-green-300: hsl(59, 25%, 64%);
+$clr-green-400: hsl(59, 25%, 54%);
+$clr-green-500: hsl(59, 25%, 44%);
+$clr-green-600: hsl(59, 25%, 34%);
+$clr-green-700: hsl(59, 25%, 24%);
+$clr-green-800: hsl(59, 25%, 14%);
+$clr-green-900: hsl(59, 25%, 04%);
+$clr-greens: (
+  "50": $clr-green-50,
+  "100": $clr-green-100,
+  "200": $clr-green-200,
+  "300": $clr-green-300,
+  "400": $clr-green-400,
+  "500": $clr-green-500,
+  "600": $clr-green-600,
+  "700": $clr-green-700,
+  "800": $clr-green-800,
+  "900": $clr-green-900,
+);
+/// Colours - Browns
+$clr-brown-50: hsl(30, 33%, 96%);
+$clr-brown-100: hsl(30, 33%, 86%);
+$clr-brown-200: hsl(30, 33%, 76%);
+$clr-brown-300: hsl(30, 33%, 66%);
+$clr-brown-400: #b48f6a;
+$clr-brown-400: hsl(30, 33%, 56%);
+$clr-brown-500: hsl(30, 33%, 46%);
+$clr-brown-600: hsl(30, 33%, 36%);
+$clr-brown-700: hsl(30, 33%, 26%);
+$clr-brown-800: hsl(30, 33%, 16%);
+$clr-brown-900: hsl(30, 33%, 6%);
+$clr-browns: (
+  "50": $clr-brown-50,
+  "100": $clr-brown-100,
+  "200": $clr-brown-200,
+  "300": $clr-brown-300,
+  "400": $clr-brown-400,
+  "500": $clr-brown-500,
+  "600": $clr-brown-600,
+  "700": $clr-brown-700,
+  "800": $clr-brown-800,
+  "900": $clr-brown-900,
+);
+/// Colours - Pinks
+$clr-pink-50: hsl(20, 67%, 94%);
+$clr-pink-100: hsl(20, 67%, 84%);
+$clr-pink-200: #e9ae90;
+$clr-pink-200: hsl(20, 67%, 74%);
+$clr-pink-300: hsl(20, 67%, 64%);
+$clr-pink-400: hsl(20, 67%, 54%);
+$clr-pink-500: hsl(20, 67%, 44%);
+$clr-pink-600: hsl(20, 67%, 34%);
+$clr-pink-700: hsl(20, 67%, 24%);
+$clr-pink-800: hsl(20, 67%, 14%);
+$clr-pink-900: hsl(20, 67%, 4%);
+$clr-pinks: (
+  "50": $clr-pink-50,
+  "100": $clr-pink-100,
+  "200": $clr-pink-200,
+  "300": $clr-pink-300,
+  "400": $clr-pink-400,
+  "500": $clr-pink-500,
+  "600": $clr-pink-600,
+  "700": $clr-pink-700,
+  "800": $clr-pink-800,
+  "900": $clr-pink-900,
+);
+/// Colours - Blues
+$clr-blue-50: hsl(175, 13%, 98%);
+$clr-blue-100: hsl(175, 13%, 88%);
+$clr-blue-200: hsl(175, 13%, 78%);
+$clr-blue-300: #a3b8b6;
+$clr-blue-300: hsl(175, 13%, 68%);
+$clr-blue-400: hsl(175, 13%, 58%);
+$clr-blue-500: hsl(175, 13%, 48%);
+$clr-blue-600: hsl(175, 13%, 38%);
+$clr-blue-700: hsl(175, 13%, 28%);
+$clr-blue-800: hsl(175, 13%, 18%);
+$clr-blue-900: hsl(175, 13%, 8%);
+$clr-blues: (
+  "50": $clr-blue-50,
+  "100": $clr-blue-100,
+  "200": $clr-blue-200,
+  "300": $clr-blue-300,
+  "400": $clr-blue-400,
+  "500": $clr-blue-500,
+  "600": $clr-blue-600,
+  "700": $clr-blue-700,
+  "800": $clr-blue-800,
+  "900": $clr-blue-900,
+);
+/// Colours - Grays
+$clr-gray-0: #ffffff;
+$clr-gray-50: #f1f1f1;
+$clr-gray-100: #e6e6e6;
+$clr-gray-200: #cccccc;
+$clr-gray-300: #b3b3b3;
+$clr-gray-400: #999999;
+$clr-gray-500: #808080;
+$clr-gray-600: #666666;
+$clr-gray-700: #4d4d4d;
+$clr-gray-800: #333333;
+$clr-gray-900: #202020;
+$clr-gray-1000: #000000;
+$clr-grays: (
+  "0": $clr-gray-0,
+  "50": $clr-gray-50,
+  "100": $clr-gray-100,
+  "200": $clr-gray-200,
+  "300": $clr-gray-300,
+  "400": $clr-gray-400,
+  "500": $clr-gray-500,
+  "600": $clr-gray-600,
+  "700": $clr-gray-700,
+  "800": $clr-gray-800,
+  "900": $clr-gray-900,
+  "1000": $clr-gray-1000,
+);

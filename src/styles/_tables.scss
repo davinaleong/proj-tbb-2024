@@ -1,0 +1,54 @@
+table {
+  --_border: thin solid theme("colors.neutral.300");
+  --_spacer-block: theme("padding.2");
+  --_spacer-inline: theme("padding.3");
+
+  text-align: left;
+  width: 100%;
+
+  thead > tr:last-child {
+    border-bottom: var(--_border);
+  }
+
+  tbody > tr {
+    border-bottom: var(--_border);
+  }
+
+  tfoot > tr:first-child {
+    border-top: var(--_border);
+  }
+
+  tfoot > tr:last-child {
+    border-bottom: var(--_border);
+  }
+
+  caption,
+  th,
+  td {
+    padding-block-start: var(--_spacer-block);
+    padding-block-end: var(--_spacer-block);
+    padding-inline-start: var(--_spacer-inline);
+    padding-inline-end: var(--_spacer-inline);
+  }
+
+  caption {
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: theme("letterSpacing.1");
+    padding-block-start: var(--_spacer-block);
+    padding-block-end: var(--_spacer-block);
+    padding-inline-start: var(--_spacer-inline);
+    padding-inline-end: var(--_spacer-inline);
+    font-family: theme("fontFamily.serif");
+    font-weight: theme("fontWeight.bold");
+  }
+
+  th {
+    text-align: left;
+    font-weight: theme("fontWeight.bold");
+  }
+}
+
+.table-responsive {
+  overflow-x: auto;
+}

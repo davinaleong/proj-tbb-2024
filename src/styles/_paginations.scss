@@ -1,0 +1,40 @@
+/// Pagniation
+
+.pagination {
+  --_pagination-border: thin solid theme("colors.tbbCream.100");
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: theme("spacing.2");
+
+  a {
+    --_a-td: none;
+    --_a-hover-td: none;
+
+    &::after {
+      content: "";
+      display: none;
+    }
+  }
+
+  &__link {
+    display: grid;
+    place-items: center;
+    background-color: theme("colors.tbbCream.50");
+    border-block-start: var(--_pagination-border);
+    border-block-end: var(--_pagination-border);
+    border-inline-start: var(--_pagination-border);
+    border-inline-end: var(--_pagination-border);
+    width: 3%;
+    aspect-ratio: 1 / 1;
+
+    &:hover {
+      background-color: theme("colors.tbbTan.200");
+    }
+
+    &[data-active="true"] {
+      --_pagination-border: thin solid theme("colors.neutral.800");
+    }
+  }
+}

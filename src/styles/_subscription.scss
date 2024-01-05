@@ -1,0 +1,116 @@
+/// Subscription
+
+.section-subscription {
+  &-hero {
+    --_section-height: 80vh;
+    --_section-bg-img: url(../assets/images/0031.png);
+
+    color: theme("colors.white");
+    background-color: theme("colors.tbbTan.300");
+
+    .section__wrapper {
+      --_decoration-size: clamp(3em, calc(3.24em + 0.87em), 5em);
+      --_decoration-bg-img: url(../assets/images/border-white.png);
+      --_decoration-spacer: theme("spacing.6");
+
+      background-image: var(--_section-bg-img);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: grid;
+      place-items: center;
+      position: relative;
+
+      &::before {
+        content: "";
+        width: var(--_decoration-size);
+        height: var(--_decoration-size);
+        background-image: var(--_decoration-bg-img);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: var(--_decoration-spacer);
+        left: var(--_decoration-spacer);
+      }
+
+      &::after {
+        content: "";
+        width: var(--_decoration-size);
+        height: var(--_decoration-size);
+        background-image: var(--_decoration-bg-img);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        right: var(--_decoration-spacer);
+        bottom: var(--_decoration-spacer);
+        rotate: 180deg;
+      }
+    }
+
+    &__body {
+      max-width: 60ch;
+      margin-inline: auto;
+    }
+  }
+
+  &-form {
+    &__heading {
+      background-color: theme("colors.tbbTan.100");
+      border-block-end: var(--_section-border);
+
+      &__wrapper {
+        text-align: center;
+        letter-spacing: theme("letterSpacing.2");
+        text-transform: uppercase;
+      }
+    }
+
+    &__wrapper {
+      border-inline-start: var(--_section-border);
+      border-inline-end: var(--_section-border);
+    }
+
+    .form {
+      display: flex;
+
+      &__group {
+        width: 100%;
+        display: flex;
+        gap: theme("spacing.0");
+
+        &-hidden {
+          display: none;
+        }
+      }
+
+      &__label {
+        display: none;
+        background-color: theme("colors.tbbTan.100");
+        border-block-start: var(--_form-border);
+        border-block-end: var(--_form-border);
+        border-inline-start: var(--_form-border);
+        border-inline-end: var(--_form-border);
+        padding-block-start: var(--_form-spacer);
+        padding-block-end: var(--_form-spacer);
+        padding-inline-start: var(--_form-spacer);
+        padding-inline-end: var(--_form-spacer);
+      }
+
+      &__field {
+        width: 100%;
+      }
+    }
+  }
+}
+
+@container container-q-subscription-form (width > theme("screens.md")) {
+  .section-subscription {
+    .form {
+      &__label {
+        display: block;
+      }
+    }
+  }
+}

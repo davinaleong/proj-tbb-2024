@@ -1,0 +1,33 @@
+/// Brand
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: theme("gap.2");
+
+  &__graphic {
+    width: 8ch;
+    height: 1em;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position-y: center;
+
+    &-left {
+      background-image: url("../assets/images/line-left.png");
+      background-position-x: right;
+    }
+
+    &-right {
+      background-image: url("../assets/images/line-right.png");
+      background-position-x: left;
+    }
+  }
+}
+
+@container body (width < theme("screens.md")) {
+  .brand {
+    &__graphic {
+      display: none;
+    }
+  }
+}

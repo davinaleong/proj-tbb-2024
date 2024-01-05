@@ -1,0 +1,54 @@
+/// Forms
+
+.form {
+  --_form-border: thin solid theme("colors.neutral.800");
+  --_form-spacer: theme("spacing.2");
+
+  &__group {
+    display: grid;
+    gap: var(--_form-spacer);
+
+    &-hidden {
+      display: none;
+    }
+  }
+
+  &__label {
+    display: block;
+    padding-block-start: var(--_form-spacer);
+    padding-block-end: var(--_form-spacer);
+    padding-inline-start: var(--_form-spacer);
+    padding-inline-end: var(--_form-spacer);
+
+    &-hidden {
+      display: none;
+    }
+  }
+
+  &__field {
+    display: block;
+    border-block-start: var(--_form-border);
+    border-block-end: var(--_form-border);
+    border-inline-start: var(--_form-border);
+    border-inline-end: var(--_form-border);
+    padding-block-start: var(--_form-spacer);
+    padding-block-end: var(--_form-spacer);
+    padding-inline-start: var(--_form-spacer);
+    padding-inline-end: var(--_form-spacer);
+
+    &-hidden {
+      display: none;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--_form-spacer);
+
+    &-hidden {
+      display: none;
+    }
+  }
+}
