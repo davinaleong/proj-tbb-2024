@@ -1,7 +1,9 @@
 ---
 import MainLayoutAstro from "../layouts/main.layout.astro"
+import { frontmatter, Content } from "../content/pages/index.md"
 
 const { APP_NAME } = import.meta.env
+const { subtitle, subscription } = frontmatter
 ---
 <MainLayoutAstro>
     <div class="flow">
@@ -11,10 +13,7 @@ const { APP_NAME } = import.meta.env
             <div class="section-home-hero__body | text-center flow">
               <h1 class="text-6xl font-serif">{APP_NAME}</h1>
     
-              <p class="text-xl">
-                My Treasury of Divine Testimonies and Sacred Revelations,
-                Unveiled Through the Scrolls of Faith.
-              </p>
+              <p class="text-xl">{subtitle}</p>
             </div>
             <!-- ./section-home-hero__body -->
           </article>
@@ -74,12 +73,7 @@ const { APP_NAME } = import.meta.env
               <div class="section-home-scripture__main__body | flow">
                 <h2 class="text-3xl font-serif">Scripture for the Season</h2>
     
-                <p>
-                  Whoever has the Son has life; whoever does not have God's Son
-                  does not have life.
-                </p>
-    
-                <p><a href="#">I John 5:12 NLT</a></p>
+                <Content />
               </div>
               <!-- ./section-home-scripture__main__body -->
               <img
@@ -93,16 +87,16 @@ const { APP_NAME } = import.meta.env
         </section>
     
         <!-- Subscribe CTA -->
-        <section class="section section-home section-home-subscribe">
-          <article
-            class="wrapper section__wrapper section-home-subscribe__wrapper mx-auto flow"
-          >
-            <h2 class="text-2xl font-serif">
-              Subscribe to receive new scrolls!
-            </h2>
-            <p><a href="subscription.html">Subscribe</a></p>
-          </article>
-        </section>
+        {subscription && <section class="section section-home section-home-subscribe">
+            <article
+              class="wrapper section__wrapper section-home-subscribe__wrapper mx-auto flow"
+            >
+              <h2 class="text-2xl font-serif">
+                Subscribe to receive new scrolls!
+              </h2>
+              <p><a href="subscription.html">Subscribe</a></p>
+            </article>
+          </section>}
     
         <!-- 10 Latest Articles -->
         <section class="section section-home section-home-articles">
