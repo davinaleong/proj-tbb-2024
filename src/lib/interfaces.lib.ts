@@ -1,3 +1,5 @@
+import contentful, { type EntryFieldTypes } from "contentful"
+
 export interface LinkInterface {
   title: string
   url: string
@@ -26,4 +28,19 @@ export interface ScriptInterface {
 
 export interface UtilsScripInterface extends ScriptInterface {
   chunkArray<T>(array: T[], chunkSize: number): T[][]
+}
+
+export interface ContentfulLibInterface {
+  client: any
+}
+
+export interface PostInterface {
+  title: EntryFieldTypes.Text
+  slug: EntryFieldTypes.Text
+  keywords: EntryFieldTypes.Text
+  subtitle: EntryFieldTypes.Text
+  excerpt: EntryFieldTypes.Text
+  body: EntryFieldTypes.Text
+  publishedAt: EntryFieldTypes.Date
+  featured: EntryFieldTypes.Boolean
 }

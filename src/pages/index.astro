@@ -1,9 +1,26 @@
 ---
+import dayjs from "dayjs"
 import MainLayoutAstro from "../layouts/main.layout.astro"
+import { client } from "../lib/contentful.lib"
+import { type PostInterface } from "../lib/interfaces.lib"
 import { frontmatter, Content } from "../content/pages/index.md"
 
-const { APP_NAME } = import.meta.env
+const { APP_NAME, CONTENTFUL_TYPE_ID, DATE_FORMAT } = import.meta.env
 const { subtitle, subscription } = frontmatter
+
+const entries = await client.getEntries<PostInterface>({
+  content_type: CONTENTFUL_TYPE_ID,
+})
+
+const posts = entries.items
+  .map((entry) => entry.fields)
+  .slice(0, 12)
+  .map((post) => ({
+    ...post,
+    date: new Date(post.publishedAt),
+  }))
+  .sort((a, b) => b.date.getTime() - a.date.getTime())
+
 ---
 <MainLayoutAstro>
     <div class="flow">
@@ -104,162 +121,19 @@ const { subtitle, subscription } = frontmatter
             class="wrapper section__wrapper section-home-articles__wrapper container-q container-q-home-articles | mx-auto p-4"
           >
             <div class="articles-grid">
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
+                {posts.map(({ title, slug, excerpt, publishedAt }: any) => {
+                  return (
+                  <article class="section-home-articles__article | flow">
+                    <h3 class="text-4xl font-serif">{title}</h3>
           
-                      <p class="text-sm">Written on <time>19 Aug 2023</time></p>
-          
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Ullam tempore debitis architecto laboriosam? Deserunt non
-                        fugit, recusandae alias nobis cum?
-                      </p>
-          
-                      <p><a href="#">Read more</a></p>
-                </article>
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
-          
-                    <p class="text-sm">Written on <time>19 Aug 2023</time></p>
+                    <p class="text-sm">Written on <time datetime={publishedAt}>{dayjs(publishedAt).format(DATE_FORMAT)}</time></p>
         
-                    <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Ullam tempore debitis architecto laboriosam? Deserunt non
-                        fugit, recusandae alias nobis cum?
-                    </p>
+                    <p>{excerpt}</p>
         
-                    <p><a href="#">Read more</a></p>
-                </article>
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
-          
-                    <p class="text-sm">Written on <time>19 Aug 2023</time></p>
-        
-                    <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Ullam tempore debitis architecto laboriosam? Deserunt non
-                    fugit, recusandae alias nobis cum?
-                    </p>
-        
-                    <p><a href="#">Read more</a></p>
-                </article>
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
-          
-                      <p class="text-sm">Written on <time>19 Aug 2023</time></p>
-          
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Ullam tempore debitis architecto laboriosam? Deserunt non
-                        fugit, recusandae alias nobis cum?
-                      </p>
-          
-                      <p><a href="#">Read more</a></p>
-                </article>
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
-          
-                      <p class="text-sm">Written on <time>19 Aug 2023</time></p>
-          
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Ullam tempore debitis architecto laboriosam? Deserunt non
-                        fugit, recusandae alias nobis cum?
-                      </p>
-          
-                      <p><a href="#">Read more</a></p>
-                </article>
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
-          
-                    <p class="text-sm">Written on <time>19 Aug 2023</time></p>
-        
-                    <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Ullam tempore debitis architecto laboriosam? Deserunt non
-                        fugit, recusandae alias nobis cum?
-                    </p>
-        
-                    <p><a href="#">Read more</a></p>
-                </article>
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
-          
-                    <p class="text-sm">Written on <time>19 Aug 2023</time></p>
-        
-                    <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Ullam tempore debitis architecto laboriosam? Deserunt non
-                    fugit, recusandae alias nobis cum?
-                    </p>
-        
-                    <p><a href="#">Read more</a></p>
-                </article>
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
-          
-                      <p class="text-sm">Written on <time>19 Aug 2023</time></p>
-          
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Ullam tempore debitis architecto laboriosam? Deserunt non
-                        fugit, recusandae alias nobis cum?
-                      </p>
-          
-                      <p><a href="#">Read more</a></p>
-                </article>
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
-          
-                      <p class="text-sm">Written on <time>19 Aug 2023</time></p>
-          
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Ullam tempore debitis architecto laboriosam? Deserunt non
-                        fugit, recusandae alias nobis cum?
-                      </p>
-          
-                      <p><a href="#">Read more</a></p>
-                </article>
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
-          
-                    <p class="text-sm">Written on <time>19 Aug 2023</time></p>
-        
-                    <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Ullam tempore debitis architecto laboriosam? Deserunt non
-                        fugit, recusandae alias nobis cum?
-                    </p>
-        
-                    <p><a href="#">Read more</a></p>
-                </article>
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
-          
-                    <p class="text-sm">Written on <time>19 Aug 2023</time></p>
-        
-                    <p>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                    Ullam tempore debitis architecto laboriosam? Deserunt non
-                    fugit, recusandae alias nobis cum?
-                    </p>
-        
-                    <p><a href="#">Read more</a></p>
-                </article>
-                <article class="section-home-articles__article | flow">
-                    <h3 class="text-4xl font-serif">Lorem, ipsum dolor.</h3>
-          
-                      <p class="text-sm">Written on <time>19 Aug 2023</time></p>
-          
-                      <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                        Ullam tempore debitis architecto laboriosam? Deserunt non
-                        fugit, recusandae alias nobis cum?
-                      </p>
-          
-                      <p><a href="#">Read more</a></p>
-                </article>
+                    <p><a href={`/scrolls/${slug}`}>Read more</a></p>
+                  </article>
+                  )
+                })}
             </div><!-- ./articles-grid -->
           </div><!-- ./wrapper -->
     
