@@ -9,8 +9,6 @@ export interface FrontmatterInterface {
 }
 
 export interface MainFrontmatterInterface extends FrontmatterInterface {
-  description: string
-  keywords: string
   releasedAt: string
   author: string
   dateFormat: string
@@ -18,6 +16,8 @@ export interface MainFrontmatterInterface extends FrontmatterInterface {
 
 export interface PageFrontmatterInterface extends FrontmatterInterface {
   subtitle: string
+  description: string
+  keywords: string
 }
 
 export interface IndexPageFrontmatterInterface
