@@ -48,7 +48,7 @@ export const footerLinks: LinkInterface[] = [
   featuredScrollLink,
   lastestScrollLink,
   archiveLink,
-  subscribeLink,
+  //   subscribeLink,
   privacyLink,
 ]
 
