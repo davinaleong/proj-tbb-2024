@@ -1,22 +1,25 @@
 ---
+import { LinkInterface } from "../lib/interfaces.lib"
+import { headerLinks} from "../scripts/links.script"
+import { chunkArray } from "../scripts/utils.script"
+
 const { APP_NAME } = import.meta.env
 
+const [one, two] = chunkArray(headerLinks, 2)
 ---
 <header class="primary-header" data-element="primary-header">
     <div class="wrapper mx-auto p-v-block-300 p-v-inline-400">
       <nav class="primary-header__nav">
         <div class="primary-header__nav__group">
-          <a href="./index.html">Home</a>
-          <a href="./post.html">Featured Scroll</a>
+          {one.map(({ title, url }: LinkInterface ) => <a href={url}>{title}</a>)}
         </div>
-        <a href="./index.html" class="brand">
+        <a href="/" class="brand">
           <div class="brand__graphic brand__graphic-left"></div>
           <div class="title">{APP_NAME}</div>
           <div class="brand__graphic brand__graphic-right"></div>
         </a>
         <div class="primary-header__nav__group">
-          <a href="./post.html">Latest Scroll</a>
-          <a href="./archive.html">Scroll Bottles</a>
+          {two.map(({ title, url }: LinkInterface ) => <a href={url}>{title}</a>)}
         </div>
       </nav>
     </div>
