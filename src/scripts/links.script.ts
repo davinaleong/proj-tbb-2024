@@ -30,6 +30,11 @@ export const subscribeLink: LinkInterface = {
   url: "/subscribe/",
 }
 
+export const contactLink: LinkInterface = {
+  title: "Scroll Connection",
+  url: "/scroll-connection/",
+}
+
 export const privacyLink: LinkInterface = {
   title: "Privacy Policy",
   url: "/privacy-policy/",
@@ -48,7 +53,8 @@ export const footerLinks: LinkInterface[] = [
   featuredScrollLink,
   lastestScrollLink,
   archiveLink,
-  //   subscribeLink,
+  // contactLink,
+  // subscribeLink,
   privacyLink,
 ]
 
