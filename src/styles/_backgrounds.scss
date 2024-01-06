@@ -1,0 +1,25 @@
+/// Backgrounds
+
+.bg {
+  --_bg-image: url("../assets/images/placeholder.png");
+
+  background-image: var(--_bg-image);
+
+  &-full {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  @for $i from 1 through 9 {
+    &-000#{$i} {
+      --_bg-image: url("../assets/images/000#{$i}.jpg");
+    }
+  }
+
+  @for $i from 10 through 32 {
+    &-00#{$i} {
+      --_bg-image: url("../assets/images/00#{$i}.jpg");
+    }
+  }
+}

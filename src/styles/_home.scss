@@ -146,6 +146,11 @@
       border-inline-end: var(--_section-border);
     }
 
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
     &__article {
       --_article-bg-clr: theme("colors.tbbPink.200");
 
@@ -153,6 +158,10 @@
       border-block-start: var(--_section-border);
       border-inline-start: var(--_section-border);
       border-inline-end: var(--_section-border);
+      padding-block-start: var(--_section-spacer);
+      padding-block-end: var(--_section-spacer);
+      padding-inline-start: var(--_section-spacer);
+      padding-inline-end: var(--_section-spacer);
 
       &__content {
         padding-block-start: var(--_section-spacer);
@@ -167,16 +176,20 @@
         object-fit: cover;
       }
 
-      &:nth-of-type(3n-1) {
+      &:nth-of-type(4n-1) {
         background-color: theme("colors.tbbBlue.300");
       }
 
-      &:nth-of-type(3n-2) {
+      &:nth-of-type(4n-2) {
         background-color: theme("colors.tbbGreen.300");
       }
 
-      &:nth-of-type(3n-3) {
+      &:nth-of-type(4n-3) {
         background-color: theme("colors.tbbPink.200");
+      }
+
+      &:nth-of-type(4n-4) {
+        background-color: theme("colors.tbbTan.200");
       }
 
       &:last-of-type {
@@ -226,27 +239,18 @@
 
 @container container-q-home-articles (width > theme("screens.md")) {
   .section-home-articles {
-    &__article {
+    .articles-grid {
       display: grid;
-      align-items: center;
-      grid-template-columns: 2fr 5fr;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
-      &:nth-of-type(odd) {
-        .section-home-articles__article__img {
-          border-inline-end: var(--_section-border);
+      .section-home-articles__article {
+        &:nth-of-type(4n-2) {
+          grid-column: span 2;
         }
-      }
 
-      &:nth-of-type(even) {
-        grid-template-columns: 5fr 2fr;
-
-        .section-home-articles__article__img {
-          border-inline-start: var(--_section-border);
+        &:nth-of-type(4n-1) {
+          grid-column: span 2;
         }
-      }
-
-      &__img {
-        display: block;
       }
     }
   }
