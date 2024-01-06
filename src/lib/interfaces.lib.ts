@@ -8,12 +8,6 @@ export interface FrontmatterInterface {
   title: string
 }
 
-export interface MainFrontmatterInterface extends FrontmatterInterface {
-  releasedAt: string
-  author: string
-  dateFormat: string
-}
-
 export interface PageFrontmatterInterface extends FrontmatterInterface {
   subtitle: string
   description: string
