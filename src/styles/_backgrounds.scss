@@ -17,7 +17,7 @@
     }
   }
 
-  @for $i from 10 through 32 {
+  @for $i from 10 through 33 {
     &-00#{$i} {
       --_bg-image: url("../assets/images/00#{$i}.jpg");
     }
