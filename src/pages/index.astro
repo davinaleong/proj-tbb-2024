@@ -8,8 +8,21 @@ import { frontmatter, Content } from "../content/pages/index.md"
 const { APP_NAME, CONTENTFUL_TYPE_ID, DATE_FORMAT } = import.meta.env
 const { subtitle, subscription } = frontmatter
 
+// const featuredEntries = await client.getEntries<PostInterface>({
+//   content_type: CONTENTFUL_TYPE_ID,
+//   "fields.featured": true,
+// })
+// const featuredPosts = featuredEntries.items
+// .map((post) => ({
+//     ...post,
+//     date: new Date(post.publishedAt),
+//   }))
+//   .sort((a, b) => b.date.getTime() - a.date.getTime())
+//   .slice(0, 1)
+
 const entries = await client.getEntries<PostInterface>({
   content_type: CONTENTFUL_TYPE_ID,
+  order: "-fields.publishedAt"
 })
 
 const posts = entries.items
@@ -17,9 +30,9 @@ const posts = entries.items
   .slice(0, 12)
   .map((post) => ({
     ...post,
-    date: new Date(post.publishedAt),
+    date: new Number(dayjs(post.publishedAt).format("YYYYMMDD")),
   }))
-  .sort((a, b) => b.date.getTime() - a.date.getTime())
+  .sort((a, b) => b.date - a.date)
 
 ---
 <MainLayoutAstro>
