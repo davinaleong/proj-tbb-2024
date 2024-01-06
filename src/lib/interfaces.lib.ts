@@ -19,3 +19,11 @@ export interface IndexPageFrontmatterInterface
   featuredSlug: string
   subscription: boolean
 }
+
+export interface ScriptInterface {
+  chunkArray<T>(array: T[], chunkSize: number): T[][]
+}
+
+export interface UtilsScripInterface extends ScriptInterface {
+  chunkArray<T>(array: T[], chunkSize: number): T[][]
+}
