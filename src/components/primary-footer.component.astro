@@ -1,16 +1,22 @@
 ---
 import dayjs from "dayjs"
+import { LinkInterface } from "../lib/interfaces.lib"
+import { footerLinks} from "../scripts/links.script"
+
 const { APP_NAME, AUTHOR, RELEASED_AT } = import.meta.env
 
 const now: number = new Date().getFullYear()
-const year: number = Number(dayjs().format("YYYY"))
+const year: number = Number(dayjs(RELEASED_AT).format("YYYY"))
 const copyrightYear: string =
 year === now ? `${now}` : `${year} - ${now}`
 ---
 <footer class="primary-footer mt-4">
-    <div class="wrapper primary-footer__wrapper | mx-auto p-4">
+    <div class="wrapper primary-footer__wrapper | flow mx-auto p-4">
+        <nav class="primary-footer__nav">
+            {footerLinks.map(({ title, url }: LinkInterface ) => <a href={url}>{title}</a>)}
+        </nav>
         <p class="text-center" data-element="copyright">
-        {APP_NAME} &copy; {AUTHOR}, {copyrightYear}
+            {APP_NAME} &copy; {AUTHOR}, {copyrightYear}
         </p>
     </div>
 </footer>

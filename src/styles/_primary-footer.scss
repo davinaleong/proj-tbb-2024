@@ -6,4 +6,11 @@
   background-color: theme("colors.tbbTan.200");
   border-block-start: var(--_primary-footer-border);
   border-block-end: var(--_primary-footer-border);
+
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: theme("spacing.2");
+    place-items: center;
+  }
 }
