@@ -37,7 +37,7 @@ export const privacyLink: LinkInterface = {
 
 export const headerLinks: LinkInterface[] = [
   homeLink,
-  aboutLink,
+  featuredScrollLink,
   lastestScrollLink,
   archiveLink,
 ]
