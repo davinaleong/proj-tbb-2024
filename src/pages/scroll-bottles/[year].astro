@@ -6,23 +6,7 @@ import { type PostGroupInterface, type PostInterface } from "../../lib/interface
 import { frontmatter } from "../../content/pages/scroll-bottles.md"
 const { title, description, keywords } = frontmatter
 
-const { CONTENTFUL_TYPE_ID } = import.meta.env
-
-console.log(CONTENTFUL_TYPE_ID)
-
-// const entries = await client.getEntries<PostInterface>({
-//   content_type: CONTENTFUL_TYPE_ID,
-//   order: "-fields.publishedAt",
-//   limit: 1000
-// })
-
-// const years: string[] = []
-// entries.items.forEach((entry) => {
-//   const year = dayjs(entry.fields.publishedAt).format("YYYY")
-//   if (!years.includes(year)) {
-//     years.push(year)
-//   }
-// })
+const { DATE_FORMAT } = import.meta.env
 
 export async function getStaticPaths() {   
     const { CONTENTFUL_TYPE_ID } = import.meta.env
@@ -64,8 +48,8 @@ export async function getStaticPaths() {
   });
 }
 
-const { year } = Astro.params;
-const { posts } = Astro.props;
+const { year } = Astro.params
+const { posts } = Astro.props
 ---
 <MainLayoutAstro title={title} description={description} keywords={keywords}>
   <div class="flow">
@@ -82,20 +66,32 @@ const { posts } = Astro.props;
     </section>
 
     <!-- Content Section -->
-    <section class="section section-archive-list section-archive-list-content">
-      <h2 class="section-archive-list-content__heading">
+    <section class="section section-archive-list section-archive-list-articles">
+      <h2 class="section-archive-list-articles__heading">
         <div
-          class="wrapper section__wrapper section-archive-list-content__heading__wrapper | text-2xl font-serif mx-auto"
+          class="wrapper section__wrapper section-archive-list-articles__heading__wrapper | text-center text-2xl font-serif mx-auto"
         >
         Scroll Bottle: {year}
         </div>
       </h2>
 
       <div
-        class="wrapper section__wrapper section-archive-list-content__wrapper container-q container-q-archive-list-content | mx-auto"
+        class="wrapper section__wrapper section-archive-list-articles__wrapper container-q container-q-articles-container | mx-auto"
       >
-        <div class="cards-grid section-archive-list-content__cards-grid">
-          //
+        <div class="articles-grid">
+          {posts.map(({ fields }: any) => {
+            return (
+              <article class="article | flow">
+                <h3 class="text-4xl font-serif">{fields.title}</h3>
+  
+                <p class="text-sm">Written on <time datetime={fields.publishedAt}>{dayjs(fields.publishedAt).format(DATE_FORMAT)}</time></p>
+  
+                <p>{fields.excerpt}</p>
+  
+                <p><a href={`/scrolls/${fields.slug}`}>Read more</a></p>
+              </article>
+            )
+          })}
         </div>
       </div>
     </section>

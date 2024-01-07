@@ -125,12 +125,12 @@ const posts = entries.items
           </h2>
     
           <div
-            class="wrapper section__wrapper section-home-articles__wrapper container-q container-q-home-articles | mx-auto p-4"
+            class="wrapper section__wrapper section-home-articles__wrapper container-q container-q container-q-articles-container | mx-auto p-4"
           >
             <div class="articles-grid">
                 {posts.map(({ title, slug, excerpt, publishedAt }: any) => {
                   return (
-                  <article class="section-home-articles__article | flow">
+                  <article class="article | flow">
                     <h3 class="text-4xl font-serif">{title}</h3>
           
                     <p class="text-sm">Written on <time datetime={publishedAt}>{dayjs(publishedAt).format(DATE_FORMAT)}</time></p>
