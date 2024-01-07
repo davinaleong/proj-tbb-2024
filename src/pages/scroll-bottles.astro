@@ -1,0 +1,62 @@
+---
+import dayjs from "dayjs"
+import MainLayoutAstro from "../layouts/main.layout.astro"
+import { client } from "../lib/contentful.lib"
+import { type PostInterface } from "../lib/interfaces.lib"
+import { frontmatter } from "../content/pages/scroll-bottles.md"
+const { title, description, keywords } = frontmatter
+
+const { CONTENTFUL_TYPE_ID, DATE_FORMAT } = import.meta.env
+
+const entries = await client.getEntries<PostInterface>({
+  content_type: CONTENTFUL_TYPE_ID,
+  order: "-fields.publishedAt",
+  limit: 1000
+})
+
+const years: string[] = []
+entries.items.forEach((entry) => {
+  const year = dayjs(entry.fields.publishedAt).format("YYYY")
+  if (!years.includes(year)) {
+    years.push(year)
+  }
+})
+
+---
+<MainLayoutAstro title={title} description={description} keywords={keywords}>
+  <div class="flow">
+    <!-- Hero Section -->
+    <section class="section section-archive section-archive-hero">
+      <article class="wrapper section__wrapper mx-auto p-4">
+        <div class="section-archive-hero__body | text-center flow">
+          <h1 class="text-6xl font-serif">{title}</h1>
+        </div>
+        <!-- ./section-archive-hero__body -->
+      </article>
+    </section>
+
+    <!-- Content Section -->
+    <section class="section section-archive section-archive-content">
+      <h2 class="section-archive-content__heading">
+        <div
+          class="wrapper section__wrapper section-archive-content__heading__wrapper | text-2xl font-serif mx-auto"
+        >
+          Old Sacred Scrolls
+        </div>
+      </h2>
+
+      <div
+        class="wrapper section__wrapper section-archive-content__wrapper container-q container-q-archive-content | mx-auto"
+      >
+        <div class="cards-grid section-archive-content__cards-grid">
+          {years.map(((year: string) => <a
+            href={`/scrolls/${year}`}
+            class="card | font-serif text-3xl p-2"
+          >
+            {year}
+          </a>))}
+        </div>
+      </div>
+    </section>
+  </div><!-- ./flow -->
+</MainLayoutAstro>
