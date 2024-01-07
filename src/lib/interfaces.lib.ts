@@ -44,3 +44,8 @@ export interface PostInterface {
   publishedAt: EntryFieldTypes.Date
   featured: EntryFieldTypes.Boolean
 }
+
+export interface PostGroupInterface {
+  year: string | number
+  posts: PostInterface[]
+}

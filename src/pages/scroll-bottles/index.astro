@@ -1,9 +1,9 @@
 ---
 import dayjs from "dayjs"
-import MainLayoutAstro from "../layouts/main.layout.astro"
-import { client } from "../lib/contentful.lib"
-import { type PostInterface } from "../lib/interfaces.lib"
-import { frontmatter } from "../content/pages/scroll-bottles.md"
+import MainLayoutAstro from "../../layouts/main.layout.astro"
+import { client } from "../../lib/contentful.lib"
+import { type PostInterface } from "../../lib/interfaces.lib"
+import { frontmatter } from "../../content/pages/scroll-bottles.md"
 const { title, description, keywords } = frontmatter
 
 const { CONTENTFUL_TYPE_ID, DATE_FORMAT } = import.meta.env
@@ -41,7 +41,7 @@ entries.items.forEach((entry) => {
         <div
           class="wrapper section__wrapper section-archive-content__heading__wrapper | text-2xl font-serif mx-auto"
         >
-          Old Sacred Scrolls
+          All Scroll Bottles
         </div>
       </h2>
 

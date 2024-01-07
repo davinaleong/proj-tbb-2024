@@ -14,7 +14,7 @@ const featuredEntries = await client.getEntries<PostInterface>({
   "fields.featured": true,
   limit: 1
 })
-console.log(featuredEntries)
+
 const featuredPost = featuredEntries.items[0].fields
 
 const entries = await client.getEntries<PostInterface>({

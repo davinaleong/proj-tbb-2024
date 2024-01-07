@@ -1,0 +1,103 @@
+---
+import dayjs from "dayjs"
+import MainLayoutAstro from "../../layouts/main.layout.astro"
+import { client } from "../../lib/contentful.lib"
+import { type PostGroupInterface, type PostInterface } from "../../lib/interfaces.lib"
+import { frontmatter } from "../../content/pages/scroll-bottles.md"
+const { title, description, keywords } = frontmatter
+
+const { CONTENTFUL_TYPE_ID } = import.meta.env
+
+console.log(CONTENTFUL_TYPE_ID)
+
+// const entries = await client.getEntries<PostInterface>({
+//   content_type: CONTENTFUL_TYPE_ID,
+//   order: "-fields.publishedAt",
+//   limit: 1000
+// })
+
+// const years: string[] = []
+// entries.items.forEach((entry) => {
+//   const year = dayjs(entry.fields.publishedAt).format("YYYY")
+//   if (!years.includes(year)) {
+//     years.push(year)
+//   }
+// })
+
+export async function getStaticPaths() {   
+    const { CONTENTFUL_TYPE_ID } = import.meta.env
+
+    const entries = await client.getEntries<PostInterface>({
+        content_type: CONTENTFUL_TYPE_ID,
+        order: "-fields.publishedAt",
+        limit: 1000
+    })
+
+    // const years: string[] = []
+    const groups: PostGroupInterface[] = []
+    entries.items.forEach((entry) => {
+        const year: string = dayjs(entry.fields.publishedAt).format("YYYY")
+        if (groups.length === 0) {
+            groups.push({
+                year,
+                posts: [entry]
+            })
+        } else {
+            const group = groups.find((group) => group.year === year)
+            if (group) {
+                group.posts.push(entry)
+            } else {
+                groups.push({
+                    year,
+                    posts: [entry]
+                })
+            }
+        }
+    })
+    groups.sort((a, b) => Number(b.year) - Number(a.year))
+
+  return groups.map(({ year, posts }: PostGroupInterface) => {
+    return {
+      params: { year: year },
+      props: { posts },
+    };
+  });
+}
+
+const { year } = Astro.params;
+const { posts } = Astro.props;
+---
+<MainLayoutAstro title={title} description={description} keywords={keywords}>
+  <div class="flow">
+    <!-- Hero Section -->
+    <section class="section section-archive-list section-archive-list-hero">
+      <article class="wrapper section__wrapper mx-auto p-4">
+        <div class="section-archive-list-hero__body | text-center flow">
+          <h1 class="text-6xl font-serif">{title}</h1>
+
+          <p class="text-xl">Scroll Bottle: {year}</p>
+        </div>
+        <!-- ./section-archive-list-hero__body -->
+      </article>
+    </section>
+
+    <!-- Content Section -->
+    <section class="section section-archive-list section-archive-list-content">
+      <h2 class="section-archive-list-content__heading">
+        <div
+          class="wrapper section__wrapper section-archive-list-content__heading__wrapper | text-2xl font-serif mx-auto"
+        >
+        Scroll Bottle: {year}
+        </div>
+      </h2>
+
+      <div
+        class="wrapper section__wrapper section-archive-list-content__wrapper container-q container-q-archive-list-content | mx-auto"
+      >
+        <div class="cards-grid section-archive-list-content__cards-grid">
+          //
+        </div>
+      </div>
+    </section>
+  </div><!-- ./flow -->
+</MainLayoutAstro>
