@@ -3,7 +3,7 @@ console.log(`file: app.js`)
 const DATA_ELEMENT_ATTR = `data-element`
 const DATA_ACTIVE_ATTR = `data-active`
 
-const API_URL = `https://proj-davinas-cms.test/api/`
+const API_URL = `https://davinas-cms.herokuapp.com/api/`
 
 async function main() {
   console.log(`fn: main()`)
@@ -92,6 +92,7 @@ async function contactFormHandler() {
       subject: formData.get(`subject`),
       message: formData.get(`message`),
     }
+    console.log(`body`, body)
 
     try {
       const response = await fetch(

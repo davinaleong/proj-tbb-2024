@@ -42,7 +42,6 @@ try {
                 placeholder="Your Name"
                 required
               />
-              <div class="form__help">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, animi!</div><!-- ./form__help -->
             </div>
             <!-- ./form__group -->
 
@@ -67,19 +66,17 @@ try {
                 placeholder="Your Email"
                 required
               />
-              <div class="form__help">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, animi!</div><!-- ./form__help -->
             </div>
             <!-- ./form__group -->
 
             <div class="form__group">
-              <label for="message_type_id" class="form__label">Subject</label>
-              <select name="subject" id="message_type_id" class="form__field">
+              <label for="subject" class="form__label">Subject</label>
+              <select name="subject" id="subject" class="form__field">
                 <option value="">-- Select --</option>
                 {messageTypes.map(({ id, title }: CmbLibMessageTypes) => (
                     <option value={id}>{title}</option>
                 ))}
               </select>
-              <div class="form__help">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, animi!</div><!-- ./form__help -->
             </div>
             <!-- ./form__group -->
 
@@ -93,7 +90,6 @@ try {
                 rows="4"
                 required
               ></textarea>
-              <div class="form__help">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, animi!</div><!-- ./form__help -->
             </div>
             <!-- ./form__group -->
 
@@ -106,8 +102,6 @@ try {
               </button>
             </div>
             <!-- ./form__buttons -->
-
-            <div class="form__help">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed, animi!</div><!-- ./form__help -->
           </form>
         </div>
       </section>
