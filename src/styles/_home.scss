@@ -146,11 +146,6 @@
       border-inline-end: var(--_section-border);
     }
 
-    .articles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    }
-
     &__article {
       --_article-bg-clr: theme("colors.tbbPink.200");
 
@@ -233,25 +228,6 @@
 
       &__img {
         display: block;
-      }
-    }
-  }
-}
-
-@container container-q-home-articles (width > theme("screens.md")) {
-  .section-home-articles {
-    .articles-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-
-      .section-home-articles__article {
-        &:nth-of-type(4n-2) {
-          grid-column: span 2;
-        }
-
-        &:nth-of-type(4n-1) {
-          grid-column: span 2;
-        }
       }
     }
   }
