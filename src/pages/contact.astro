@@ -1,0 +1,103 @@
+---
+import MainLayoutAstro from "../layouts/main.layout.astro"
+
+import { frontmatter } from "../content/pages/contact.md"
+const { title, description, keywords, subtitle } = frontmatter
+---
+<MainLayoutAstro title={title} description={description} keywords={keywords}>
+    <div class="flow">
+      <!-- Hero Section -->
+      <section class="section section-contact section-contact-hero">
+        <article class="wrapper section__wrapper mx-auto p-4">
+          <div class="section-contact-hero__body | text-center flow">
+            <h1 class="text-6xl font-serif">{title}</h1>
+
+            <p class="text-xl">{subtitle}</p>
+          </div>
+          <!-- ./section-contact-hero__body -->
+        </article>
+      </section>
+  
+      <!-- Contact Form Section -->
+      <section class="section section-contact section-contact-form">
+        <div
+          class="wrapper section__wrapper section-contact-form__wrapper container-q container-q-contact-form | mx-auto p-4"
+        >
+          <form action="#" method="post" class="form | flow">
+            <div class="form__group">
+              <label for="first_name" class="form__label">Name</label>
+              <input
+                type="text"
+                name="first_name"
+                id="first_name"
+                class="form__field"
+                placeholder="Your Name"
+                required
+              />
+            </div>
+            <!-- ./form__group -->
+
+            <div class="form__group form__group-hidden">
+              <label for="last_name" class="form__label">Last Name</label>
+              <input
+                type="text"
+                name="last_name"
+                id="last_name"
+                class="form__field"
+                required
+              />
+            </div>
+            <!-- ./form__group -->
+
+            <div class="form__group">
+              <label for="email" class="form__label">Email</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                class="form__field"
+                placeholder="Your Email"
+                required
+              />
+            </div>
+            <!-- ./form__group -->
+
+            <div class="form__group">
+              <label for="subject" class="form__label">Subject</label>
+              <select name="subject" id="subject" class="form__field">
+                <option value="">-- Select --</option>
+                <option value="1">Hangout in Singapore</option>
+                <option value="2">Prayer Request</option>
+                <option value="3">Feedback</option>
+                <option value="4">Other</option>
+              </select>
+            </div>
+            <!-- ./form__group -->
+
+            <div class="form__group">
+              <label for="message" class="form__label">Message</label>
+              <textarea
+                name="message"
+                id="message"
+                class="form__field"
+                placeholder="Your Message"
+                rows="4"
+                required
+              ></textarea>
+            </div>
+            <!-- ./form__group -->
+
+            <div class="form__buttons">
+              <button type="submit" class="btn btn-tbb btn-tbbBlue">
+                Send
+              </button>
+              <button type="reset" class="btn btn-tbb btn-tbbTan">
+                Reset
+              </button>
+            </div>
+            <!-- ./form__buttons -->
+          </form>
+        </div>
+      </section>
+    </div><!-- ./flow -->
+  </MainLayoutAstro>
