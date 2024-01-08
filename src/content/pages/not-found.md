@@ -13,5 +13,5 @@ In the spirit of Davina Leong's creation, let us celebrate the journey, for it i
 
 May the scrolls be ever in your favor as you navigate the vast tapestry of knowledge.
 
-- [/](Return to the Beloved's Blog)
-- [/scroll-bottles/](Explore More Scrolls)
+- [Return to the Beloved's Blog](/)
+- [Explore More Scrolls](/scroll-bottles/)
