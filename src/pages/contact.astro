@@ -1,8 +1,18 @@
 ---
 import MainLayoutAstro from "../layouts/main.layout.astro"
-
+import { type CmbLibMessageTypes } from "../lib/cms.lib"
+import { fetchMessageTypes } from "../lib/cms.lib"
 import { frontmatter } from "../content/pages/contact.md"
-const { title, description, keywords, subtitle } = frontmatter
+const { title, description, keywords } = frontmatter
+
+const messageTypes: CmbLibMessageTypes[] = []
+
+try {
+    const json = await fetchMessageTypes()
+    messageTypes.push(...json.messageTypes.data)
+} catch (error) {
+    console.error(`Fetch message type error`, error)
+}
 ---
 <MainLayoutAstro title={title} description={description} keywords={keywords}>
     <div class="flow">
@@ -64,10 +74,9 @@ const { title, description, keywords, subtitle } = frontmatter
               <label for="subject" class="form__label">Subject</label>
               <select name="subject" id="subject" class="form__field">
                 <option value="">-- Select --</option>
-                <option value="1">Hangout in Singapore</option>
-                <option value="2">Prayer Request</option>
-                <option value="3">Feedback</option>
-                <option value="4">Other</option>
+                {messageTypes.map(({ id, title }: CmbLibMessageTypes) => (
+                    <option value={id}>{title}</option>
+                ))}
               </select>
             </div>
             <!-- ./form__group -->

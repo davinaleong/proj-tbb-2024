@@ -5,9 +5,9 @@ const { API_URL, APP_SLUG } = import.meta.env
 export const METHOD_GET = "GET"
 export const METHOD_POST = "POST"
 
-export const MESSAGE_TYPE_URL = `${API_URL}/misc/messageTypes/${APP_SLUG}`
-export const MESSAGE_URL = `${API_URL}/misc/messages/${APP_SLUG}`
-export const SUBSCRIBER_URL = `${API_URL}/misc/subscribers/${APP_SLUG}`
+export const MESSAGE_TYPE_URL = `${API_URL}misc/messageTypes/${APP_SLUG}`
+export const MESSAGE_URL = `${API_URL}misc/messages/${APP_SLUG}`
+export const SUBSCRIBER_URL = `${API_URL}misc/subscribers/${APP_SLUG}`
 
 export const headers = {
   "Content-Type": "application/json",

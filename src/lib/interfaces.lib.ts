@@ -76,3 +76,11 @@ export interface CmsLibInterface {
   fetchMessages(body: any): Promise<any>
   fetchSubscribers(body: any): Promise<any>
 }
+
+export interface CmsLibMessageTypeInterface {
+  id: number
+  name: string
+  title: string
+  value: string
+  sortOrder: number
+}
