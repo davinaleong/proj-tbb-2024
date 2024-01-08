@@ -1,9 +1,9 @@
 ---
 import dayjs from "dayjs"
-import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
+import MarkdownIt from "markdown-it"
 import MainLayoutAstro from "../../layouts/main.layout.astro"
 import { client } from "../../lib/contentful.lib"
-import { type PostGroupInterface, type PostInterface } from "../../lib/interfaces.lib"
+import { type PostInterface } from "../../lib/interfaces.lib"
 
 const { DATE_FORMAT, CONTENTFUL_TYPE_ID } = import.meta.env
 
@@ -23,7 +23,8 @@ export async function getStaticPaths() {
   });
 }
 
-const { slug } = Astro.props
+const markdown = new MarkdownIt()
+const { slug } = Astro.params
 
 let post: any
 try {
@@ -33,27 +34,20 @@ try {
     })
 
     const { title, subtitle, excerpt, keywords, body, publishedAt }: any = data.items[0].fields
-
     post = {
         title,
         subtitle,
-        subtitleHtml: subtitle === "" ? "" : documentToHtmlString(subtitle),
+        subtitleHtml: (subtitle && typeof subtitle === "string") ? markdown.render(subtitle) : "",
         excerpt,
         keywords,
         body,
-        bodyHtml: documentToHtmlString(body),
+        bodyHtml: (body && typeof body === "string") ? markdown.render(body) : "",
         publishedAt
     }
 } catch(error) {
+    console.error(error)
     return Astro.redirect("/404")
 }
-
-// const { entry } = Astro.props
-// const { fields } = entry
-// const { title, subtitle, excerpt, keywords, body, publishedAt }: any = fields
-// const subtitleHtml = subtitle === "" ? "" : documentToHtmlString(subtitle)
-// const bodyHtml = documentToHtmlString(body)
-// console.log(body, bodyHtml)
 ---
 <MainLayoutAstro title={post?.title} description={post?.excerpt} keywords={post?.keywords}>
     <div class="flow">
@@ -64,12 +58,14 @@ try {
             <h1 class="text-6xl font-serif">{post?.title}</h1>
 
             <p class="text-xl">Written on <time datetime={post?.publishedAt}>{dayjs(post?.publishedAt).format(DATE_FORMAT)}</time></p>
+
+            <p class="text-xl">{slug}</p>
           </div>
           <!-- ./section-archive-list-hero__body -->
         </article>
       </section>
   
-      {post?.subtitle !== "" && (
+      {typeof post?.subtitle === "string" && (
         <section class="section section-post section-post-hightlight">
           <article
             set:html={post?.subtitleHtml}
