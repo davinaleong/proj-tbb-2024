@@ -58,3 +58,21 @@ export interface PostGroupInterface {
   year: string | number
   posts: Entry<PostInterface>[]
 }
+
+export interface OptionsInterface {
+  method: string
+  headers: any
+  body: string
+}
+
+export interface CmsLibInterface {
+  METHOD_GET: string
+  METHOD_POST: string
+  MESSAGE_TYPE_URL: string
+  MESSAGE_URL: string
+  SUBSCRIBER_URL: string
+  options(body: any, method: string, headers?: any): OptionsInterface
+  fetchMessageTypes(): Promise<any>
+  fetchMessages(body: any): Promise<any>
+  fetchSubscribers(body: any): Promise<any>
+}
