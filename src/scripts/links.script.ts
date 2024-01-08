@@ -46,12 +46,12 @@ export const archiveLink: LinkInterface = {
 }
 
 export const subscribeLink: LinkInterface = {
-  title: "Subscribe",
+  title: "Subscribe Scroll",
   url: "/subscribe/",
 }
 
 export const contactLink: LinkInterface = {
-  title: "Contact",
+  title: "Contact Scroll",
   url: "/contact/",
 }
 
