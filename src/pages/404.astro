@@ -1,0 +1,30 @@
+---
+import MainLayoutAstro from "../layouts/main.layout.astro"
+
+import { frontmatter, Content } from "../content/pages/not-found.md"
+const { title, subtitle } = frontmatter
+---
+<MainLayoutAstro>
+    <div class="flow">
+      <!-- Hero Section -->
+      <section class="section section-404 section-404-hero">
+        <article class="wrapper section__wrapper mx-auto p-4">
+          <div class="section-404-hero__body | text-center flow">
+            <h1 class="text-6xl font-serif">{title}</h1>
+
+            <p class="text-xl">{subtitle}</p>
+          </div>
+          <!-- ./section-404-hero__body -->
+        </article>
+      </section>
+  
+      <!-- Content Section -->
+      <section class="section section-404 section-404-content">
+        <div
+          class="wrapper section__wrapper section-404-content__wrapper container-q container-q-404-content | content flow mx-auto"
+        >
+            <Content />
+        </div><!-- ./flow -->
+      </section>
+    </div><!-- ./flow -->
+  </MainLayoutAstro>

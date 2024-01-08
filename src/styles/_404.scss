@@ -1,0 +1,64 @@
+/// 404 - Not Found
+
+.section-404 {
+  &-hero {
+    --_section-height: 80vh;
+    --_section-bg-img: url(../assets/images/0035.png);
+
+    color: theme("colors.white");
+    background-color: theme("colors.tbbPink.300");
+
+    .section__wrapper {
+      --_decoration-size: clamp(3em, calc(3.24em + 0.87em), 5em);
+      --_decoration-bg-img: url(../assets/images/border-white.png);
+      --_decoration-spacer: theme("spacing.6");
+
+      background-image: var(--_section-bg-img);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: grid;
+      place-items: center;
+      position: relative;
+
+      &::before {
+        content: "";
+        width: var(--_decoration-size);
+        height: var(--_decoration-size);
+        background-image: var(--_decoration-bg-img);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        top: var(--_decoration-spacer);
+        left: var(--_decoration-spacer);
+      }
+
+      &::after {
+        content: "";
+        width: var(--_decoration-size);
+        height: var(--_decoration-size);
+        background-image: var(--_decoration-bg-img);
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        position: absolute;
+        right: var(--_decoration-spacer);
+        bottom: var(--_decoration-spacer);
+        rotate: 180deg;
+      }
+    }
+
+    &__body {
+      max-width: 60ch;
+      margin-inline: auto;
+    }
+  }
+
+  &-content {
+    &__wrapper {
+      border-inline-start: var(--_section-border);
+      border-inline-end: var(--_section-border);
+    }
+  }
+}
