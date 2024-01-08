@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 
     const entries = await client.getEntries<PostInterface>({
         content_type: CONTENTFUL_TYPE_ID,
-        order: "-fields.publishedAt",
+        order: ["-fields.publishedAt"],
         limit: 1000
     })
 

@@ -12,6 +12,7 @@
   "dependencies": {
     "@astrojs/check": "^0.3.4",
     "@astrojs/tailwind": "^5.1.0",
+    "@types/markdown-it": "^13.0.7",
     "astro": "^4.1.0",
     "contentful": "^10.6.16",
     "dayjs": "^1.11.10",

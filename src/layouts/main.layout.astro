@@ -1,6 +1,5 @@
 ---
 import "../styles/app.scss"
-import dayjs from "dayjs"
 import favicon from "../assets/images/logo.svg"
 
 import PrimaryHeaderComponentAstro from "../components/primary-header.component.astro"
@@ -10,11 +9,6 @@ const { APP_NAME, DESCRIPTION, KEYWORDS, AUTHOR } = import.meta.env
 
 const { title = ``, description = DESCRIPTION, keywords = KEYWORDS } = Astro.props
 const thisTitle = title ? `${APP_NAME} - ${title}` : APP_NAME
-
-const now: number = new Date().getFullYear()
-const year: number = Number(dayjs().format("YYYY"))
-const copyrightYear: string =
-year === now ? `${now}` : `${year} - ${now}`
 ---
 <!DOCTYPE html>
 <html lang="en">

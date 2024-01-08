@@ -1,4 +1,4 @@
-import contentful, { type EntryFieldTypes } from "contentful"
+import { type Entry, type EntryFieldTypes } from "contentful"
 
 export interface LinkInterface {
   title: string
@@ -26,7 +26,7 @@ export interface ScriptInterface {
   chunkArray<T>(array: T[], chunkSize: number): T[][]
 }
 
-export interface UtilsScripInterface extends ScriptInterface {
+export interface UtilsScriptInterface extends ScriptInterface {
   chunkArray<T>(array: T[], chunkSize: number): T[][]
 }
 
@@ -34,7 +34,16 @@ export interface ContentfulLibInterface {
   client: any
 }
 
+export type PostType = Entry<PostInterface>
+
 export interface PostInterface {
+  contentTypeId: string
+  fields: PostFieldsInterface
+  order?: string[]
+  limit?: number
+}
+
+export interface PostFieldsInterface {
   title: EntryFieldTypes.Text
   slug: EntryFieldTypes.Text
   keywords: EntryFieldTypes.Text
@@ -47,5 +56,5 @@ export interface PostInterface {
 
 export interface PostGroupInterface {
   year: string | number
-  posts: PostInterface[]
+  posts: Entry<PostInterface>[]
 }

@@ -6,13 +6,13 @@ import { type PostInterface } from "../lib/interfaces.lib"
 const { CONTENTFUL_TYPE_ID } = import.meta.env
 const latestEntries = await client.getEntries<PostInterface>({
   content_type: CONTENTFUL_TYPE_ID,
-  order: "-fields.publishedAt",
+  order: ["-fields.publishedAt"],
   limit: 1,
 })
 
 const featuredEntries = await client.getEntries<PostInterface>({
   content_type: CONTENTFUL_TYPE_ID,
-  order: "-fields.publishedAt",
+  order: ["-fields.publishedAt"],
   "fields.featured": true,
   limit: 1,
 })

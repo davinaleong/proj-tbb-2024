@@ -1,4 +1,4 @@
-import { UtilsScripInterface } from "../lib/interfaces.lib"
+import { type UtilsScriptInterface } from "../lib/interfaces.lib"
 
 export function chunkArray<T>(array: T[], chunkSize: number): T[][] {
   const chunkedArray: T[][] = []
@@ -12,6 +12,6 @@ export function chunkArray<T>(array: T[], chunkSize: number): T[][] {
   return chunkedArray
 }
 
-export const utilsScript: UtilsScripInterface = {
+export const utilsScript: UtilsScriptInterface = {
   chunkArray,
 }

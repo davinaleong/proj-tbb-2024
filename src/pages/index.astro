@@ -10,16 +10,16 @@ const { subtitle, subscription } = frontmatter
 
 const featuredEntries = await client.getEntries<PostInterface>({
   content_type: CONTENTFUL_TYPE_ID,
-  order: "-fields.publishedAt",
+  order: ["-fields.publishedAt"],
   "fields.featured": true,
   limit: 1
 })
 
-const featuredPost = featuredEntries.items[0].fields
+const featuredPost: any = featuredEntries.items[0].fields
 
 const entries = await client.getEntries<PostInterface>({
   content_type: CONTENTFUL_TYPE_ID,
-  order: "-fields.publishedAt"
+  order: ["-fields.publishedAt"]
 })
 
 const posts = entries.items
@@ -29,7 +29,7 @@ const posts = entries.items
     ...post,
     date: new Number(dayjs(post.publishedAt).format("YYYYMMDD")),
   }))
-  .sort((a, b) => b.date - a.date)
+  .sort((a, b) => Number(b.date) - Number(a.date))
 
 ---
 <MainLayoutAstro>
