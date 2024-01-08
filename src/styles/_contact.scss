@@ -72,6 +72,10 @@
         border-block-end: var(--_form-border);
         border-inline-start: var(--_form-border);
       }
+
+      &__help {
+        grid-column: 1 / -1;
+      }
     }
   }
 }

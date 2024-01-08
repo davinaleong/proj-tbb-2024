@@ -10,6 +10,7 @@ async function main() {
 
   toggleMenu()
   subscribeFormHandler()
+  contactFormHandler()
 }
 
 function toggleMenu() {
@@ -72,6 +73,57 @@ function getElements(key = ``, parent = null) {
   }
 }
 
+async function contactFormHandler() {
+  console.log(`fn: contactFormHandler()`)
+
+  const formEl = getElement(`contact-form`)
+  if (!formEl) return
+
+  formEl.querySelectorAll(`.form__help`).forEach((element) => element.remove())
+  formEl.addEventListener(`submit`, async function (event) {
+    event.preventDefault()
+
+    const formData = new FormData(formEl)
+    if (formData.get("last_name")) return
+
+    const body = {
+      first_name: formData.get(`first_name`),
+      email: formData.get(`email`),
+      subject: formData.get(`subject`),
+      message: formData.get(`message`),
+    }
+
+    try {
+      const response = await fetch(
+        `${API_URL}misc/messages/the-beloveds-blog`,
+        {
+          method: `POST`,
+          headers: {
+            "Content-Type": `application/json`,
+            Accept: `application/json`,
+          },
+          body: JSON.stringify(body),
+        }
+      )
+
+      const { status, message } = await response.json()
+      const pEl = document.createElement(`p`)
+      pEl.classList.add(`form__help`)
+      if (status === `SUCCESS`) {
+        pEl.classList.add(`text-tbbGreen-700`)
+      } else {
+        pEl.classList.add(`text-tbbPink-700`)
+      }
+      pEl.textContent = message
+      formEl.appendChild(pEl)
+
+      formEl.reset()
+    } catch (error) {
+      console.error(`subscribeFormHandler error`, error)
+    }
+  })
+}
+
 async function subscribeFormHandler() {
   console.log(`fn: subscribeFormHandler()`)
 
@@ -90,17 +142,14 @@ async function subscribeFormHandler() {
     }
 
     try {
-      const response = await fetch(
-        `https://proj-davinas-cms.test/api/blog/subscribers`,
-        {
-          method: `POST`,
-          headers: {
-            "Content-Type": `application/json`,
-            Accept: `application/json`,
-          },
-          body: JSON.stringify(body),
-        }
-      )
+      const response = await fetch(`${API_URL}blog/subscribers`, {
+        method: `POST`,
+        headers: {
+          "Content-Type": `application/json`,
+          Accept: `application/json`,
+        },
+        body: JSON.stringify(body),
+      })
 
       const { status, message } = await response.json()
       const pEl = document.createElement(`p`)
