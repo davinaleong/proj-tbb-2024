@@ -73,33 +73,35 @@
     }
 
     .form {
-      display: flex;
-
-      &__group {
-        width: 100%;
+      &-flex {
         display: flex;
-        gap: theme("spacing.0");
 
-        &-hidden {
-          display: none;
+        .form__group {
+          width: 100%;
+          display: flex;
+          gap: theme("spacing.0");
+
+          &-hidden {
+            display: none;
+          }
         }
-      }
 
-      &__label {
-        display: none;
-        background-color: theme("colors.tbbTan.100");
-        border-block-start: var(--_form-border);
-        border-block-end: var(--_form-border);
-        border-inline-start: var(--_form-border);
-        border-inline-end: var(--_form-border);
-        padding-block-start: var(--_form-spacer);
-        padding-block-end: var(--_form-spacer);
-        padding-inline-start: var(--_form-spacer);
-        padding-inline-end: var(--_form-spacer);
-      }
+        .form__label {
+          display: none;
+          background-color: theme("colors.tbbTan.100");
+          border-block-start: var(--_form-border);
+          border-block-end: var(--_form-border);
+          border-inline-start: var(--_form-border);
+          border-inline-end: var(--_form-border);
+          padding-block-start: var(--_form-spacer);
+          padding-block-end: var(--_form-spacer);
+          padding-inline-start: var(--_form-spacer);
+          padding-inline-end: var(--_form-spacer);
+        }
 
-      &__field {
-        width: 100%;
+        .form__field {
+          width: 100%;
+        }
       }
     }
   }
