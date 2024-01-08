@@ -1,0 +1,89 @@
+---
+import dayjs from "dayjs"
+import { documentToHtmlString } from "@contentful/rich-text-html-renderer"
+import MainLayoutAstro from "../../layouts/main.layout.astro"
+import { client } from "../../lib/contentful.lib"
+import { type PostGroupInterface, type PostInterface } from "../../lib/interfaces.lib"
+
+const { DATE_FORMAT, CONTENTFUL_TYPE_ID } = import.meta.env
+
+export async function getStaticPaths() {   
+    const { CONTENTFUL_TYPE_ID } = import.meta.env
+
+    const entries = await client.getEntries<PostInterface>({
+        content_type: CONTENTFUL_TYPE_ID,
+        order: "-fields.publishedAt",
+        limit: 1000
+    })
+
+  return entries.items.map((entry: any) => {
+    return {
+      params: { slug: entry.fields.slug }
+    };
+  });
+}
+
+const { slug } = Astro.props
+
+let post: any
+try {
+    const data = await client.getEntries<PostInterface>({
+        content_type: CONTENTFUL_TYPE_ID,
+        "fields.slug": slug
+    })
+
+    const { title, subtitle, excerpt, keywords, body, publishedAt }: any = data.items[0].fields
+
+    post = {
+        title,
+        subtitle,
+        subtitleHtml: subtitle === "" ? "" : documentToHtmlString(subtitle),
+        excerpt,
+        keywords,
+        body,
+        bodyHtml: documentToHtmlString(body),
+        publishedAt
+    }
+} catch(error) {
+    return Astro.redirect("/404")
+}
+
+// const { entry } = Astro.props
+// const { fields } = entry
+// const { title, subtitle, excerpt, keywords, body, publishedAt }: any = fields
+// const subtitleHtml = subtitle === "" ? "" : documentToHtmlString(subtitle)
+// const bodyHtml = documentToHtmlString(body)
+// console.log(body, bodyHtml)
+---
+<MainLayoutAstro title={post?.title} description={post?.excerpt} keywords={post?.keywords}>
+    <div class="flow">
+      <!-- Hero Section -->
+      <section class="section section-archive-list section-archive-list-hero">
+        <article class="wrapper section__wrapper mx-auto p-4">
+          <div class="section-archive-list-hero__body | text-center flow">
+            <h1 class="text-6xl font-serif">{post?.title}</h1>
+
+            <p class="text-xl">Written on <time datetime={post?.publishedAt}>{dayjs(post?.publishedAt).format(DATE_FORMAT)}</time></p>
+          </div>
+          <!-- ./section-archive-list-hero__body -->
+        </article>
+      </section>
+  
+      {post?.subtitle !== "" && (
+        <section class="section section-post section-post-hightlight">
+          <article
+            set:html={post?.subtitleHtml}
+            class="wrapper section__wrapper section-post-hightlight__wrapper | content flow mx-auto p-4"
+          />
+        </section>
+      )}
+
+        <section class="section section-post section-post-content">
+          <article
+            set:html={post?.bodyHtml}
+            class="wrapper section__wrapper section-post-content__wrapper | content flow mx-auto p-4"
+            >
+          </article>
+        </section>
+    </div><!-- ./flow -->
+</MainLayoutAstro>
