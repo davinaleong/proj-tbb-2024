@@ -5,16 +5,25 @@ const DATA_ACTIVE_ATTR = `data-active`
 
 const API_URL = `https://davinas-cms.herokuapp.com/api/`
 
+const METHOD_GET = `GET`
+const METHOD_POST = `POST`
+const METHOD_DELETE = `DELETE`
+
 async function main() {
-  console.log(`fn: main()`)
+  logFunction(`main`)
 
   toggleMenu()
-  subscribeFormHandler()
   contactFormHandler()
+  subscribeFormHandler()
+  unsubscribeFormHandler()
+}
+
+function logFunction(name, params = {}) {
+  console.log(`fn: ${name}()`, params)
 }
 
 function toggleMenu() {
-  console.log(`fn: toggleMenu()`)
+  logFunction(`toggleMenu`)
 
   const primaryHeaderEl = getElement(`primary-header`)
 
@@ -38,7 +47,7 @@ function toggleMenu() {
 }
 
 function getElement(key = ``, parent = null) {
-  console.log(`fn: getElement()`, { key, parent })
+  logFunction(`getElement`, { key, parent })
 
   if (parent) {
     try {
@@ -56,7 +65,7 @@ function getElement(key = ``, parent = null) {
 }
 
 function getElements(key = ``, parent = null) {
-  console.log(`fn: getElements()`, { key, parent })
+  logFunction(`getElements`, { key, parent })
 
   if (parent) {
     try {
@@ -74,7 +83,7 @@ function getElements(key = ``, parent = null) {
 }
 
 async function contactFormHandler() {
-  console.log(`fn: contactFormHandler()`)
+  logFunction(`contactFormHandler`)
 
   const formEl = getElement(`contact-form`)
   if (!formEl) return
@@ -126,7 +135,7 @@ async function contactFormHandler() {
 }
 
 async function subscribeFormHandler() {
-  console.log(`fn: subscribeFormHandler()`)
+  logFunction(`subscribeFormHandler`)
 
   const formEl = getElement(`subscribe-form`)
   if (!formEl) return
@@ -144,7 +153,7 @@ async function subscribeFormHandler() {
 
     try {
       const response = await fetch(`${API_URL}blog/subscribers`, {
-        method: `POST`,
+        method: METHOD_POST,
         headers: {
           "Content-Type": `application/json`,
           Accept: `application/json`,
@@ -166,6 +175,51 @@ async function subscribeFormHandler() {
       formEl.reset()
     } catch (error) {
       console.error(`subscribeFormHandler error`, error)
+    }
+  })
+}
+
+async function unsubscribeFormHandler() {
+  logFunction(`unsubscribeFormHandler`)
+
+  const formEl = getElement(`unsubscribe-form`)
+  if (!formEl) return
+
+  formEl.querySelector(`.form__help`).remove()
+  formEl.addEventListener(`submit`, async function (event) {
+    event.preventDefault()
+
+    const formData = new FormData(formEl)
+    if (formData.get("last_name")) return
+
+    const body = {
+      email: formData.get(`email`),
+    }
+
+    try {
+      const response = await fetch(`${API_URL}blog/subscribers`, {
+        method: METHOD_DELETE,
+        headers: {
+          "Content-Type": `application/json`,
+          Accept: `application/json`,
+        },
+        body: JSON.stringify(body),
+      })
+
+      const { status, message } = await response.json()
+      const pEl = document.createElement(`p`)
+      pEl.classList.add(`form__help`)
+      if (status === `SUCCESS`) {
+        pEl.classList.add(`text-tbbGreen-700`)
+      } else {
+        pEl.classList.add(`text-tbbPink-700`)
+      }
+      pEl.textContent = message
+      formEl.appendChild(pEl)
+
+      formEl.reset()
+    } catch (error) {
+      console.error(`unsubscribeFormHandler error`, error)
     }
   })
 }
