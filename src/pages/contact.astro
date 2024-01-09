@@ -1,11 +1,11 @@
 ---
 import MainLayoutAstro from "../layouts/main.layout.astro"
-import { type CmbLibMessageTypes } from "../lib/cms.lib"
+import { type CmsLibMessageTypeInterface } from "../lib/interfaces.lib"
 import { fetchMessageTypes } from "../lib/cms.lib"
 import { frontmatter } from "../content/pages/contact.md"
 const { title, description, keywords } = frontmatter
 
-const messageTypes: CmbLibMessageTypes[] = []
+const messageTypes: CmsLibMessageTypeInterface[] = []
 
 try {
     const json = await fetchMessageTypes()
@@ -73,7 +73,7 @@ try {
               <label for="subject" class="form__label">Subject</label>
               <select name="subject" id="subject" class="form__field">
                 <option value="">-- Select --</option>
-                {messageTypes.map(({ id, title }: CmbLibMessageTypes) => (
+                {messageTypes.map(({ id, title }: CmsLibMessageTypeInterface) => (
                     <option value={id}>{title}</option>
                 ))}
               </select>
