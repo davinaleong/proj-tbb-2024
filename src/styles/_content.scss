@@ -58,6 +58,8 @@
     // grid-template-columns: min-content auto min-content;
     padding-block-start: var(--_blockquote-spacer);
     padding-block-end: var(--_blockquote-spacer);
+    padding-inline-start: var(--_blockquote-spacer);
+    padding-inline-end: var(--_blockquote-spacer);
     border-block-start: var(--_blockquote-border);
     border-block-end: var(--_blockquote-border);
     border-inline-start: var(--_blockquote-border);
