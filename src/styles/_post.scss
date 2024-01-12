@@ -8,6 +8,10 @@
     color: theme("colors.white");
     background-color: theme("colors.tbbGreen.300");
 
+    time {
+      color: theme("colors.tbbCream.200");
+    }
+
     .section__wrapper {
       --_decoration-size: clamp(3em, calc(3.24em + 0.87em), 5em);
       --_decoration-bg-img: url(../assets/images/border-white.png);
