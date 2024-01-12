@@ -53,9 +53,9 @@
     --_blockquote-border: thin solid theme("colors.neutral.800");
 
     background-color: theme("colors.tbbBlue.300");
-    display: grid;
-    align-items: center;
-    grid-template-columns: min-content auto min-content;
+    // display: grid;
+    // align-items: center;
+    // grid-template-columns: min-content auto min-content;
     padding-block-start: var(--_blockquote-spacer);
     padding-block-end: var(--_blockquote-spacer);
     border-block-start: var(--_blockquote-border);
@@ -63,36 +63,36 @@
     border-inline-start: var(--_blockquote-border);
     border-inline-end: var(--_blockquote-border);
 
-    &::before {
-      content: "Bible Verse";
-      letter-spacing: theme("letterSpacing.3");
-      font-family: theme("fontFamily.serif");
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      padding-block-start: var(--_blockquote-decor-spacer);
-      padding-block-end: var(--_blockquote-decor-spacer);
-      padding-inline-start: var(--_blockquote-decor-spacer);
-      padding-inline-end: var(--_blockquote-decor-spacer);
-      border-right: var(--_blockquote-border);
-      margin-right: var(--_blockquote-spacer);
-      margin-top: calc(var(--_blockquote-spacer) * -1);
-      margin-bottom: calc(var(--_blockquote-spacer) * -1);
-    }
+    // &::before {
+    //   content: "Bible Verse";
+    //   letter-spacing: theme("letterSpacing.3");
+    //   font-family: theme("fontFamily.serif");
+    //   writing-mode: vertical-rl;
+    //   text-orientation: mixed;
+    //   padding-block-start: var(--_blockquote-decor-spacer);
+    //   padding-block-end: var(--_blockquote-decor-spacer);
+    //   padding-inline-start: var(--_blockquote-decor-spacer);
+    //   padding-inline-end: var(--_blockquote-decor-spacer);
+    //   border-right: var(--_blockquote-border);
+    //   margin-right: var(--_blockquote-spacer);
+    //   margin-top: calc(var(--_blockquote-spacer) * -1);
+    //   margin-bottom: calc(var(--_blockquote-spacer) * -1);
+    // }
 
-    &::after {
-      content: "Bible Verse";
-      letter-spacing: theme("letterSpacing.3");
-      font-family: theme("fontFamily.serif");
-      writing-mode: vertical-rl;
-      text-orientation: mixed;
-      padding-block-start: var(--_blockquote-decor-spacer);
-      padding-block-end: var(--_blockquote-decor-spacer);
-      padding-inline-start: var(--_blockquote-decor-spacer);
-      padding-inline-end: var(--_blockquote-decor-spacer);
-      border-left: var(--_blockquote-border);
-      margin-left: var(--_blockquote-spacer);
-      margin-top: calc(var(--_blockquote-spacer) * -1);
-      margin-bottom: calc(var(--_blockquote-spacer) * -1);
-    }
+    // &::after {
+    //   content: "Bible Verse";
+    //   letter-spacing: theme("letterSpacing.3");
+    //   font-family: theme("fontFamily.serif");
+    //   writing-mode: vertical-rl;
+    //   text-orientation: mixed;
+    //   padding-block-start: var(--_blockquote-decor-spacer);
+    //   padding-block-end: var(--_blockquote-decor-spacer);
+    //   padding-inline-start: var(--_blockquote-decor-spacer);
+    //   padding-inline-end: var(--_blockquote-decor-spacer);
+    //   border-left: var(--_blockquote-border);
+    //   margin-left: var(--_blockquote-spacer);
+    //   margin-top: calc(var(--_blockquote-spacer) * -1);
+    //   margin-bottom: calc(var(--_blockquote-spacer) * -1);
+    // }
   }
 }
