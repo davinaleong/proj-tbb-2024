@@ -2,7 +2,7 @@
 
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
   .article {
     &:nth-of-type(4n-1) {
