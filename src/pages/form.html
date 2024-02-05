@@ -1,0 +1,63 @@
+<form method="post" class="form | flow" data-element="contact-form">
+  <div class="form__group">
+    <label for="first_name" class="form__label">Name</label>
+    <input
+      type="text"
+      name="first_name"
+      id="first_name"
+      class="form__field"
+      placeholder="Your Name"
+      required
+    />
+  </div>
+  <!-- ./form__group -->
+
+  <div class="form__group form__group-hidden">
+    <label for="last_name" class="form__label">Last Name</label>
+    <input type="text" name="last_name" id="last_name" class="form__field" />
+  </div>
+  <!-- ./form__group -->
+
+  <div class="form__group">
+    <label for="email" class="form__label">Email</label>
+    <input
+      type="email"
+      name="email"
+      id="email"
+      class="form__field"
+      placeholder="Your Email"
+      required
+    />
+  </div>
+  <!-- ./form__group -->
+
+  <div class="form__group">
+    <label for="subject" class="form__label">Subject</label>
+    <select name="subject" id="subject" class="form__field">
+      <option value="">-- Select --</option>
+      {messageTypes.map(({ id, title }: CmsLibMessageTypeInterface) => (
+      <option value="{id}">{title}</option>
+      ))}
+    </select>
+  </div>
+  <!-- ./form__group -->
+
+  <div class="form__group">
+    <label for="message" class="form__label">Message</label>
+    <textarea
+      name="message"
+      id="message"
+      class="form__field"
+      placeholder="Your Message"
+      rows="4"
+      required
+    ></textarea>
+  </div>
+  <!-- ./form__group -->
+
+  <div class="form__buttons">
+    <button type="submit" class="btn btn-tbb btn-tbbBlue">Send</button>
+    <button type="reset" class="btn btn-tbb btn-tbbTan">Reset</button>
+  </div>
+  <!-- ./form__buttons -->
+</form>
