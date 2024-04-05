@@ -75,7 +75,7 @@ export const footerLinks: LinkInterface[] = [
   archiveLink,
   contactLink,
   // subscribeLink,
-  privacyLink,
+  // privacyLink,
 ]
 
 export const links: LinkInterface[] = [...headerLinks, ...footerLinks]
